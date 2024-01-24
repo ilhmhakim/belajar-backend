@@ -1,3 +1,4 @@
+//File ini tuh buat server agar dapat meminta request ke port 4000, klo index atau solution js gunanya buat respond
 import express from "express";
 import bodyParser from "body-parser";
 import axios from "axios";
@@ -70,7 +71,8 @@ app.post("/api/posts/:id", async (req, res) => {
 // Delete a post
 app.get("/api/posts/delete/:id", async (req, res) => {
   try {
-    await axios.delete(`${API_URL}/posts/${req.params.id}`);
+    const response = await axios.delete(`${API_URL}/posts/${req.params.id}`);
+    console.log(response.data);
     res.redirect("/");
   } catch (error) {
     res.status(500).json({ message: "Error deleting post" });
