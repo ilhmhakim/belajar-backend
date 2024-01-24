@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EJS Tags</title>
+</head>
+
+<body>
+  <h1>
+    <!-- Tite goes here -->
+    <!-- Title akan ditampilkan -->
+    <%= title %>
+  </h1>
+  <p>Current second:
+    <!-- Current second goes here -->
+    <!-- Current second akan ditampilkan -->
+    <%= seconds %>
+  </p>
+  <!-- if statement akan dieksekusi tanpa ditampilkan -->
+  <% if (seconds % 2===0) { %>
+  <ul>
+    <!-- List goes here if current second is even. -->
+    <!-- forEach akan dieksekusi -->
+    <%items.forEach((fruit)=> { %>
+      <li>
+        <!-- fruit akan ditampilkan -->
+        <%=fruit %>
+      </li>
+      <!-- Penutup tersebut akan dieksekusi -->
+      <%}) %>
+    <!-- Otherwise it should display the following: -->
+    <!-- <p>No items to display</p> -->
+  </ul>
+  <!-- else akan dieksekusi -->
+  <% } else { %>
+  <p>No items to display</p>
+  <!-- penutup akan dieksekusi -->
+  <% } %>
+  <p>
+    <!-- HTML content goes here -->
+    <!-- Di indeks berisi html akan dirender -->
+    <%- htmlContent %>
+  </p>
+
+  <!-- Footer goes here -->
+  <!-- Akan dirender dari file lain -->
+  <%- include("footer.ejs") %>
+</body>
+
+</html>
